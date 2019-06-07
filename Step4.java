@@ -7,22 +7,26 @@ class Step4 {
 
     public static void main(String[] args) {
 
-        List<String> list = new ArrayList<>(Arrays.asList("aA", "bB", "cC", "dD", "eE", "fF"));
+        List<Person> list = new ArrayList<>(Arrays.asList(
+                new Person("Kari", "Parmentier"),
+                new Person("Gérard", "Laurent"),
+                new Person("Apolline", "Truchon")
+        ));
 
-        List<String> listMapped = map(list, new Function<String, String>() {
+        List<String> listMapped = map(list, new Function<Person, String>() {
             @Override
-            public String apply(String item) {
-                return item.toUpperCase();
+            public String apply(Person item) {
+                return item.getFirstName() + " " + item.getLastName();
             }
         });
 
         System.out.println(listMapped.toString());
     }
 
-    private static List<String> map(List<String> list, Function<String, String> upper) {
+    private static List<String> map(List<Person> list, Function<Person, String> concat) {
         List<String> listMapped = new ArrayList<>();
-        for (String item : list) {
-            listMapped.add(upper.apply(item));
+        for (Person item : list) {
+            listMapped.add(concat.apply(item));
         }
         return listMapped;
     }

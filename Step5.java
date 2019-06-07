@@ -8,13 +8,17 @@ class Step5 {
 
     public static void main(String[] args) {
 
-        List<String> list = new ArrayList<>(Arrays.asList("aA", "bB", "cC", "dD", "eE", "fF"));
+        List<Person> list = new ArrayList<>(Arrays.asList(
+                new Person("Kari", "Parmentier"),
+                new Person("Gérard", "Laurent"),
+                new Person("Apolline", "Truchon")
+        ));
 
         List<String> listMapped = list.stream()
-                .map(new Function<String, String>() {
+                .map(new Function<Person, String>() {
                     @Override
-                    public String apply(String item) {
-                        return item.toUpperCase();
+                    public String apply(Person item) {
+                        return item.getFirstName() + " " + item.getLastName();
                     }
                 })
                 .collect(Collectors.toList());
