@@ -13,6 +13,7 @@ class Step1 {
         for (String item : list) {
             listMapped.add(item.toUpperCase());
         }
+
         System.out.println(listMapped.toString());
     }
 }
